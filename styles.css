@@ -1,0 +1,26 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board {
+    height: min-content;
+    width: min-content;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    background-color: black;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
