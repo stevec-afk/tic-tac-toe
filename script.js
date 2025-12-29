@@ -66,8 +66,9 @@ function DisplayController() {
 
     // Renders the game board on the page
     const updateScreen = () => {
-        boardDiv.textContent = "";
-        const board = game.getBoard();
+        boardDiv.textContent = ""; // Clears the boardDiv & all nested elements
+        const board = game.getBoard(); // Gets newest board state from controller
+        
         board.forEach((cell, index) => {
             const cellDiv = document.createElement("div");
             cellDiv.classList.add("cell");
@@ -77,6 +78,7 @@ function DisplayController() {
         })
     }
 
+    // Click handlers for the board and reset button respectively
     function clickHandlerBoard(e) {
         const clickedCell = e.target;
         if (!clickedCell.classList.contains('cell')) return;
