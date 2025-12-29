@@ -64,6 +64,7 @@ function DisplayController() {
         board.forEach((cell, index) => {
             const cellDiv = document.createElement("div");
             cellDiv.classList.add("cell");
+            cellDiv.dataset.index = index;
             cellDiv.textContent = cell;
             boardDiv.appendChild(cellDiv);
         })
@@ -72,7 +73,7 @@ function DisplayController() {
     function clickHandlerBoard(e) {
         const clickedCell = e.target;
         if (!clickedCell.classList.contains('cell')) return;
-        game.playRound(clickedCell);
+        game.playRound(clickedCell.dataset.index);
         updateScreen();
     }
 
