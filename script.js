@@ -48,18 +48,36 @@ function GameController() {
     }
     
     return {
-        playRound
+        playRound,
+        getBoard: board.getBoard
     };
 }
 
 function DisplayController() {
     const game = GameController();
+    const boardDiv = document.querySelector('.board');
 
     const updateScreen = () => {
+        boardDiv.textContent = "";
+        const board = game.getBoard();
 
+        board.forEach((cell, index) => {
+            const cellDiv = document.createElement("div");
+            cellDiv.classList.add("cell");
+            cellDiv.textContent = cell;
+            boardDiv.appendChild(cellDiv);
+        })
     }
 
+    function clickHandlerBoard(e) {
+        const clickedCell = e.target;
+        if (!clickedCell.classList.contains('cell')) return;
+        game.playRound(clickedCell);
+        updateScreen();
+    }
 
+    // Initialize
+    boardDiv.addEventListener("click", clickHandlerBoard);
     updateScreen();
 };
 
